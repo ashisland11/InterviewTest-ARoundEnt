@@ -1,12 +1,24 @@
 const express = require('express');
 require('dotenv').config();
 
+
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
+
+//implement the CORS config
+
+const cors = require('cors');
 
 app.use(express.json());
 
-//implement the CORS config
+
+// Implement CORS configuration
+app.use(cors({
+    origin: '*', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization'] 
+}));
+
 
 //products array
 let products = [
@@ -25,13 +37,34 @@ const fetchImageUrl = () => {
 
 //implement the get api for getting products
 app.get('/api/products', (req, res) => {
-
+    const productsWithImages = products.map(product => ({
+        ...product,
+        imageUrl: fetchImageUrl()
+    }));
+    res.json(productsWithImages);
 });
+
 
 //implement the delete api for deleting a product by Id
 app.delete('/api/products/:id', (req, res) => {
-    
+    const { id } = req.params;
+    const productId = parseInt(id, 10);
+
+    const productIndex = products.findIndex(product => product.id === productId);
+    if (productIndex === -1) {
+        return res.status(404).json({ message: 'Product not found' });
+    }
+
+    products.splice(productIndex, 1);
+    res.status(200).json({ message: 'Product deleted successfully' });
 });
+
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Internal Server Error' });
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
