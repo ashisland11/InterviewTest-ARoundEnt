@@ -1,11 +1,24 @@
-# SWE INTERVIEW TEST 
-THIS IS TO TEST YOUR SKILLS TO MEET OUR APP DEVELOPMENT REQUIREMENTS
+# Project Name
 
-1. Clone this repo to your local machine.
-2. Read `Assignment Requirements` carefully and follow it.
-4. Please commit your entire code to `your own Github repository` 
-5. On your repo, please add step-by-step instructions on how to launch (for both the Backend and Frontend) to the `README.md`
-6. Share your repo link with us via email.
+This project is a simple product management app that includes a **Frontend** built with React and Material-UI, and a **Backend** built with Node.js and Express.
 
-HAPPY CODING! </br>
-A Round Entertainment
+---
+
+## Prerequisites
+
+Make sure you have the following installed on your system:
+
+- **Node.js** (version 14 or higher)
+- **npm** (comes with Node.js)
+- **Git** (optional, for cloning the repository)
+
+---
+
+## Step-by-Step Instructions
+
+### 1. Clone the Repository
+
+First, clone the repository to your local system:
+```bash
+git clone <repository-url>
+cd <repository-folder>
