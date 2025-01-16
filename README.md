@@ -20,8 +20,8 @@ Make sure you have the following installed on your system:
 
 First, clone the repository to your local system:
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone git@github.com:ashisland11/InterviewTest-ARoundEnt.git
+cd StarterCode
 
 ```
 ## 2. Configure Environment Variables
